@@ -22,11 +22,11 @@ _marker = object()
 
 class IDateRecurringIndex(Interface):
     attr_recurdef = Text(
-        title=u"Attribute- or fieldname of recurrence rule definition."
-              u"RFC2445 compatible string or timedelta."
+        title="Attribute- or fieldname of recurrence rule definition."
+              "RFC2445 compatible string or timedelta."
     )
     attr_until = Text(
-        title=u"Attribute- or fieldname of until date (optional)."
+        title="Attribute- or fieldname of until date (optional)."
     )
 
 
@@ -94,7 +94,7 @@ class DateRecurringIndex(UnIndex, PropertyManager):
             dates = recurrence_sequence_ical(
                 date_attr, recrule=recurdef, until=until)
 
-        newvalues = IISet(map(dt2int, dates))
+        newvalues = IISet(list(map(dt2int, dates)))
         oldvalues = self._unindex.get(documentId, _marker)
         if oldvalues is not _marker:
             oldvalues = IISet(oldvalues)
